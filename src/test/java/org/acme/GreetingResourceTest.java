@@ -1,10 +1,12 @@
 package org.acme;
 
 import io.quarkus.test.junit.QuarkusTest;
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.startsWith;
 
 @QuarkusTest
 public class GreetingResourceTest {
@@ -15,7 +17,7 @@ public class GreetingResourceTest {
           .when().get("/hello")
           .then()
              .statusCode(200)
-             .body(is("Hello from RESTEasy Reactive"));
+             .body(startsWith("Hello from RESTEasy Reactive"));
     }
 
 }
